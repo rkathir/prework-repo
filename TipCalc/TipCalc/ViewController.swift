@@ -58,9 +58,12 @@ class ViewController: UIViewController {
         // Set default Tip Index
         let defaults = UserDefaults.standard
         
-        tipControl.selectedSegmentIndex = defaults.object(forKey: "defaultTipIndex") as! Int
-
-        
+        if (defaults.object(forKey: "defaultTipIndex") == nil) {
+                tipControl.selectedSegmentIndex = 0
+        }
+        else {
+                tipControl.selectedSegmentIndex = defaults.object(forKey: "defaultTipIndex") as! Int
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

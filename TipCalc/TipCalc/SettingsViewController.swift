@@ -31,7 +31,12 @@ class SettingsViewController: UIViewController {
         // Set default Tip Index
         let defaults = UserDefaults.standard
         
-        defaultTipPct.selectedSegmentIndex = defaults.object(forKey: "defaultTipIndex") as! Int
+        if (defaults.object(forKey: "defaultTipIndex") == nil) {
+            defaultTipPct.selectedSegmentIndex = 0
+        }
+        else {
+            defaultTipPct.selectedSegmentIndex = defaults.object(forKey: "defaultTipIndex") as! Int
+        }
     }
 
     override func didReceiveMemoryWarning() {
